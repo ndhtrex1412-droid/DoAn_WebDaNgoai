@@ -1,0 +1,924 @@
+/*
+Theme Name: Camping Store Child
+Theme URI: http://example.com/camping-child/
+Description: Child theme for Lang Son Camping Store, based on Astra.
+Author: dhoan28
+Author URI: http://example.com
+Template: astra
+Version: 1.1.0
+Text Domain: camping-child-theme
+*/
+
+/* ==========================================================================
+   Global Variables & Typography
+   ========================================================================== */
+:root {
+    --primary-color: #1B4332; /* Deep Forest Green */
+    --secondary-color: #8B5A2B; /* Earthy Brown */
+    --accent-color: #FF5722; /* High-visibility Orange */
+    --accent-hover: #E64A19;
+    --text-main: #2D3748;
+    --text-muted: #718096;
+    --bg-color: #F8F9FA;
+    --card-bg: #FFFFFF;
+    --border-radius: 12px;
+    --box-shadow-soft: 0 4px 6px rgba(0,0,0,0.05);
+    --box-shadow-hover: 0 15px 30px rgba(0,0,0,0.1);
+    --transition: all 0.3s ease;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, a, span, div {
+    font-family: 'Inter', sans-serif !important;
+}
+
+body {
+    background-color: var(--bg-color) !important;
+    color: var(--text-main);
+}
+
+/* ==========================================================================
+   Header and Footer overrides
+   ========================================================================== */
+.ast-primary-header-bar,
+.site-header {
+    background-color: var(--primary-color) !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.site-primary-footer-wrap,
+.ast-builder-footer-grid-columns,
+.site-footer {
+    background-color: var(--primary-color) !important;
+    color: #ffffff;
+    border-top: 4px solid var(--secondary-color);
+}
+
+.site-header a, .site-footer a, 
+.site-header, .site-footer {
+    color: #ffffff !important;
+}
+
+/* ==========================================================================
+   WooCommerce Product Grid (Card Design)
+   ========================================================================== */
+.woocommerce ul.products li.product,
+.woocommerce-page ul.products li.product {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    border: none !important;
+    box-shadow: var(--box-shadow-soft);
+    transition: var(--transition);
+    overflow: hidden;
+    padding-bottom: 20px;
+    position: relative;
+    text-align: center;
+}
+
+.woocommerce ul.products li.product:hover,
+.woocommerce-page ul.products li.product:hover {
+    box-shadow: var(--box-shadow-hover);
+    transform: translateY(-8px);
+}
+
+/* Product Images */
+.woocommerce ul.products li.product a img {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #edf2f7;
+    transition: transform 0.5s ease;
+}
+
+.woocommerce ul.products li.product:hover a img {
+    transform: scale(1.03);
+}
+
+/* Product Titles */
+.woocommerce ul.products li.product .woocommerce-loop-product__title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 10px;
+    padding: 0 15px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 44px; /* Fixed height for 2 lines */
+}
+
+/* Product Price */
+.woocommerce ul.products li.product .price {
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    color: var(--accent-color) !important;
+    margin-bottom: 15px;
+}
+
+/* ==========================================================================
+   Sale Badges
+   ========================================================================== */
+.woocommerce span.onsale {
+    background-color: #E53E3E !important; /* Vibrant Red */
+    color: white !important;
+    font-weight: 700;
+    border-radius: 20px;
+    padding: 5px 15px;
+    min-height: auto;
+    min-width: auto;
+    line-height: 1.2;
+    top: 15px;
+    left: 15px;
+    right: auto;
+    box-shadow: 0 4px 6px rgba(229, 62, 62, 0.4);
+    text-transform: uppercase;
+    font-size: 12px;
+    z-index: 9;
+}
+
+/* ==========================================================================
+   CTA Buttons (Add to cart, Checkout)
+   ========================================================================== */
+.woocommerce #respond input#submit, 
+.woocommerce a.button, 
+.woocommerce button.button, 
+.woocommerce input.button {
+    background-color: var(--card-bg) !important;
+    color: var(--accent-color) !important;
+    border: 2px solid var(--accent-color) !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    padding: 10px 20px !important;
+    transition: var(--transition);
+    width: 80%;
+    margin: 0 auto;
+    display: inline-block;
+}
+
+.woocommerce #respond input#submit:hover, 
+.woocommerce a.button:hover, 
+.woocommerce button.button:hover, 
+.woocommerce input.button:hover {
+    background-color: var(--accent-color) !important;
+    color: #ffffff !important;
+    box-shadow: 0 6px 12px rgba(255, 87, 34, 0.3);
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Single Product Page Enhancements
+   ========================================================================== */
+.woocommerce div.product p.price, 
+.woocommerce div.product span.price {
+    color: var(--accent-color) !important;
+    font-size: 28px !important;
+    font-weight: 800 !important;
+}
+
+.woocommerce div.product .product_title {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* ==========================================================================
+   Camper Combo Deal Notice (Upsell)
+   ========================================================================== */
+.camper-combo-notice {
+    background: linear-gradient(135deg, #F0FFF4 0%, #C6F6D5 100%) !important;
+    border: none !important;
+    border-left: 5px solid #38A169 !important;
+    border-radius: 10px !important;
+    padding: 20px !important;
+    margin: 25px 0 !important;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+    color: #22543D !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: slideInUp 0.5s ease-out;
+}
+
+@keyframes slideInUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   Utility Classes
+   ========================================================================== */
+.text-center {
+    text-align: center;
+}
+
+.section-heading {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.section-subheading {
+    font-size: 16px;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+}
+
+/* ==========================================================================
+   1. Hero Banner
+   ========================================================================== */
+.camping-hero-banner {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Lớp phủ đen mờ 60% */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.hero-title {
+    font-size: 48px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-slogan {
+    font-size: 20px;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.hero-cta {
+    font-size: 18px !important;
+    padding: 15px 40px !important;
+    border-radius: 50px !important; /* Bo tròn hoàn toàn */
+    background-color: var(--accent-color) !important;
+    color: #fff !important;
+    border: none !important;
+}
+
+/* ==========================================================================
+   2. Featured Categories
+   ========================================================================== */
+.camping-featured-categories {
+    margin-bottom: 80px;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.category-item {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 40px 20px;
+    text-align: center;
+    box-shadow: var(--box-shadow-soft);
+    transition: var(--transition);
+    text-decoration: none !important;
+    display: block;
+}
+
+.category-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-hover);
+}
+
+.category-icon {
+    font-size: 48px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.category-title {
+    font-size: 20px;
+    color: var(--primary-color);
+    font-weight: 700;
+    margin: 0;
+}
+
+/* ==========================================================================
+   3. Featured Products Section
+   ========================================================================== */
+.camping-featured-products {
+    margin-bottom: 80px;
+}
+
+.view-all-btn-wrap {
+    margin-top: 40px;
+}
+
+/* ==========================================================================
+   Responsive & Mobile Grid (2 Cột)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 32px;
+    }
+    
+    .category-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    /* Ép lưới sản phẩm WooCommerce thành 2 cột trên Mobile */
+    .woocommerce ul.products[class*=columns-] li.product, 
+    .woocommerce-page ul.products[class*=columns-] li.product {
+        width: 48% !important;
+        float: left !important;
+        clear: none !important;
+        margin: 0 4% 20px 0 !important;
+    }
+    
+    .woocommerce ul.products[class*=columns-] li.product:nth-child(2n) {
+        margin-right: 0 !important;
+    }
+    
+    .woocommerce ul.products[class*=columns-] li.product:nth-child(2n+1) {
+        clear: both !important;
+    }
+}
+
+/* ==========================================================================
+   4. Trust Indicators
+   ========================================================================== */
+.camping-trust-indicators {
+    margin: 60px auto;
+    padding: 40px 20px;
+    background-color: #ffffff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-soft);
+}
+
+.trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.trust-item {
+    text-align: center;
+    padding: 20px;
+}
+
+.trust-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.trust-item h4 {
+    font-size: 18px;
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.trust-item p {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
+   5. Testimonials
+   ========================================================================== */
+.camping-testimonials {
+    margin-bottom: 80px;
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.testimonial-item {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-soft);
+    position: relative;
+    border-top: 4px solid var(--accent-color);
+}
+
+.testimonial-item .stars {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.testimonial-item .review-text {
+    font-size: 16px;
+    font-style: italic;
+    color: var(--text-main);
+    margin-bottom: 20px;
+}
+
+.testimonial-item .reviewer-name {
+    font-weight: 700;
+    color: var(--primary-color);
+    text-align: right;
+}
+
+/* ==========================================================================
+   6. Newsletter
+   ========================================================================== */
+.camping-newsletter {
+    background-color: var(--primary-color);
+    padding: 60px 20px;
+    margin-bottom: 0;
+}
+
+.newsletter-content {
+    max-width: 600px;
+    margin: 0 auto;
+    color: #ffffff;
+}
+
+.newsletter-content h2 {
+    color: #ffffff;
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.newsletter-content p {
+    font-size: 16px;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.newsletter-form input[type="email"] {
+    padding: 15px 20px;
+    border-radius: 50px;
+    border: none;
+    width: 60%;
+    font-size: 16px;
+}
+
+.newsletter-form button {
+    width: auto;
+    margin: 0;
+}
+
+/* Responsive updates cho các khối mới */
+@media (max-width: 992px) {
+    .trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .testimonial-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .trust-grid {
+        grid-template-columns: 1fr;
+    }
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+    .newsletter-form {
+        flex-direction: column;
+    }
+    .newsletter-form input[type="email"] {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    .newsletter-form button {
+        width: 100%;
+    }
+}
+
+/* ==========================================================================
+   7. Header Menu Icons
+   ========================================================================== */
+.menu-item-cart-custom > a::before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+    vertical-align: -2px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ffffff"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>') no-repeat center;
+}
+
+.menu-item-account-custom > a::before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+    vertical-align: -2px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ffffff"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>') no-repeat center;
+}
+
+/* Đổi màu icon thành đen nếu menu ở trạng thái hover hoặc ở trang trắng */
+.ast-theme-transparent-header .main-header-menu > .menu-item:hover > a::before {
+    filter: invert(1);
+}
+
+/* ==========================================================================
+   8. Nhãn Giảm Giá Nhấp Nháy (Blinking Sale Badge)
+   ========================================================================== */
+.woocommerce span.onsale {
+    background-color: #ffffff !important;
+    color: #E53E3E !important;
+    border: 2px solid #E53E3E !important;
+    border-radius: 4px !important;
+    font-weight: 800 !important;
+    font-size: 13px !important;
+    padding: 4px 8px !important;
+    text-transform: uppercase !important;
+    box-shadow: 0 4px 6px rgba(229, 62, 62, 0.2) !important;
+    min-height: auto !important;
+    min-width: auto !important;
+    line-height: 1 !important;
+    top: 10px !important;
+    right: 10px !important;
+    left: auto !important;
+    animation: blink-sale 1.5s infinite !important;
+}
+
+@keyframes blink-sale {
+    0%   { opacity: 1; transform: scale(1); }
+    50%  { opacity: 0.6; transform: scale(1.05); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* ==========================================================================
+   9. Footer & Typography (Chống chìm màu)
+   ========================================================================== */
+.site-footer {
+    background-color: var(--primary-color) !important;
+    color: #f8f9fa !important;
+}
+
+.site-footer a, 
+.site-footer .ast-footer-copyright {
+    color: #f8f9fa !important;
+    font-weight: 500 !important;
+}
+
+.site-footer a:hover {
+    color: var(--accent-color) !important;
+}
+
+/* Làm nét chữ Menu */
+.main-header-menu .menu-link {
+    font-weight: 600 !important;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   Logo Thương Hiệu (Fallback bằng CSS)
+   ========================================================================== */
+.site-title a {
+    display: flex !important;
+    align-items: center;
+}
+.site-title a::before {
+    content: "";
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    background-image: url('logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 15px;
+}
+
+/* ==========================================================================
+   10. Khối Tin Tức (News Grid)
+   ========================================================================== */
+.camping-news-section {
+    padding: 60px 0;
+}
+.section-heading-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: #333;
+    text-transform: uppercase;
+}
+.section-heading-line::before,
+.section-heading-line::after {
+    content: "";
+    height: 1px;
+    background-color: #ccc;
+    flex-grow: 1;
+    margin: 0 20px;
+    max-width: 100px;
+}
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+.news-item {
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+.news-item:hover {
+    transform: translateY(-5px);
+}
+.news-thumb-link {
+    display: block;
+    overflow: hidden;
+}
+.news-thumb {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+.news-item:hover .news-thumb {
+    transform: scale(1.05);
+}
+.news-info {
+    padding: 20px;
+    text-align: center;
+}
+.news-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+    text-transform: uppercase;
+    line-height: 1.4;
+}
+.news-title a {
+    color: #333;
+    text-decoration: none;
+}
+.news-title a:hover {
+    color: var(--accent-color);
+}
+
+/* ==========================================================================
+   11. Khối Thương Hiệu (Brands Grid)
+   ========================================================================== */
+.camping-brands-section {
+    padding: 20px 0 60px;
+}
+.brands-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+.brand-item {
+    flex: 1;
+    min-width: 150px;
+    text-align: center;
+    padding: 20px;
+}
+.brand-item h2 {
+    font-size: 24px;
+    font-weight: 900;
+    color: #222;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+.brand-item:hover h2 {
+    opacity: 1;
+}
+
+/* ==========================================================================
+   12. Mega Footer Nâng Cao
+   ========================================================================== */
+.site-footer {
+    display: none !important; /* Ẩn footer mặc định của Astra */
+}
+.camping-mega-footer {
+    background-color: #000;
+    color: #fff;
+    padding: 60px 0 0;
+    font-size: 14px;
+    border-top: 5px solid #6b4c3a; /* Viền nâu trên cùng giống mẫu */
+}
+.mega-footer-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30px;
+    margin-bottom: 40px;
+}
+.footer-title {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+.footer-col p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+    color: #ccc;
+}
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.footer-links li {
+    margin-bottom: 10px;
+}
+.footer-links a, .footer-links li {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.footer-links a:hover {
+    color: #fff;
+}
+.mega-footer-bottom {
+    background-color: #111;
+    text-align: center;
+    padding: 15px 0;
+    border-top: 1px solid #333;
+}
+.mega-footer-bottom p {
+    margin: 0;
+    color: #888;
+    font-size: 12px;
+}
+
+/* ==========================================================================
+   13. Widget Nút Gọi Điện Chuyên Nghiệp (Hotline Ring)
+   ========================================================================== */
+.hotline-phone-ring-wrap {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 999999;
+}
+.hotline-phone-ring {
+    position: relative;
+    visibility: visible;
+    background-color: transparent;
+    width: 110px;
+    height: 110px;
+    cursor: pointer;
+    z-index: 11;
+    transition: visibility .5s;
+    left: 0;
+    bottom: 0;
+    display: block;
+}
+.hotline-phone-ring-circle {
+    width: 85px;
+    height: 85px;
+    top: 10px;
+    left: 10px;
+    position: absolute;
+    background-color: transparent;
+    border-radius: 100%;
+    border: 2px solid #e60808;
+    animation: phonering-alo-circle-anim 1.2s infinite ease-in-out;
+    transition: all .5s;
+    transform-origin: 50% 50%;
+    opacity: 0.5;
+}
+.hotline-phone-ring-circle-fill {
+    width: 55px;
+    height: 55px;
+    top: 25px;
+    left: 25px;
+    position: absolute;
+    background-color: rgba(230, 8, 8, 0.5);
+    border-radius: 100%;
+    border: 2px solid transparent;
+    animation: phonering-alo-circle-fill-anim 2.3s infinite ease-in-out;
+    transition: all .5s;
+    transform-origin: 50% 50%;
+}
+.hotline-phone-ring-img-circle {
+    background-color: #e60808;
+    width: 33px;
+    height: 33px;
+    top: 37px;
+    left: 37px;
+    position: absolute;
+    background-size: 20px;
+    border-radius: 100%;
+    border: 2px solid transparent;
+    animation: phonering-alo-circle-img-anim 1s infinite ease-in-out;
+    transform-origin: 50% 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hotline-phone-ring-img-circle .pps-btn-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+.hotline-phone-ring-img-circle .pps-btn-img svg {
+    width: 18px;
+    height: 18px;
+}
+.hotline-bar {
+    position: absolute;
+    background: #e60808;
+    height: 40px;
+    width: 180px;
+    line-height: 40px;
+    border-radius: 3px;
+    padding: 0 10px 0 50px;
+    background-size: 100%;
+    cursor: pointer;
+    transition: all 0.8s;
+    z-index: 9;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.1);
+    border-radius: 50px;
+    left: 33px;
+    bottom: 37px;
+}
+.hotline-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    text-indent: 10px;
+    display: block;
+    letter-spacing: 1px;
+}
+.hotline-bar a:hover,
+.hotline-bar a:active {
+    color: #fff;
+}
+
+@keyframes phonering-alo-circle-anim {
+    0% { transform: rotate(0) scale(0.5) skew(1deg); opacity: 0.1; }
+    30% { transform: rotate(0) scale(0.7) skew(1deg); opacity: 0.5; }
+    100% { transform: rotate(0) scale(1) skew(1deg); opacity: 0.1; }
+}
+@keyframes phonering-alo-circle-fill-anim {
+    0% { transform: rotate(0) scale(0.7) skew(1deg); opacity: 0.2; }
+    50% { transform: rotate(0) scale(1) skew(1deg); opacity: 0.2; }
+    100% { transform: rotate(0) scale(0.7) skew(1deg); opacity: 0.2; }
+}
+@keyframes phonering-alo-circle-img-anim {
+    0% { transform: rotate(0) scale(1) skew(1deg); }
+    10% { transform: rotate(-25deg) scale(1) skew(1deg); }
+    20% { transform: rotate(25deg) scale(1) skew(1deg); }
+    30% { transform: rotate(-25deg) scale(1) skew(1deg); }
+    40% { transform: rotate(25deg) scale(1) skew(1deg); }
+    50% { transform: rotate(0) scale(1) skew(1deg); }
+    100% { transform: rotate(0) scale(1) skew(1deg); }
+}
+
+/* Responsive cho Footer và News */
+@media (max-width: 992px) {
+    .news-grid { grid-template-columns: repeat(2, 1fr); }
+    .mega-footer-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 768px) {
+    .news-grid { grid-template-columns: 1fr; }
+    .mega-footer-grid { grid-template-columns: 1fr; }
+    .brands-grid { justify-content: center; }
+    .hotline-phone-ring-wrap { bottom: 10px; left: 10px; transform: scale(0.8); transform-origin: bottom left; }
+}
